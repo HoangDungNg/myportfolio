@@ -21,13 +21,15 @@
   // the argument will configure phpmailer to throw an exception if there is a problem
   $mail = new PHPMailer(true);
 
+  $mail->SMTPDebug = SMTP::DEBUG_SERVER;
+
   // let PHPMailer knows that SMTP server will be used
   $mail->isSMTP();
   $mail->SMTPAuth = true;
 
   //establish SMTP server
   $mail->Host = "smtp.gmail.com";
-  $mail->SMTPSecure = 'ssl';
+  $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
   $mail->Port = 587;
 
   $mail->Username = "dungnguyen322003@gmail.com";
