@@ -27,7 +27,7 @@
 
   //establish SMTP server
   $mail->Host = "smtp.gmail.com";
-  $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+  $mail->SMTPSecure = 'ssl';
   $mail->Port = 587;
 
   $mail->Username = "dungnguyen322003@gmail.com";
