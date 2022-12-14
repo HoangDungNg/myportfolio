@@ -13,11 +13,16 @@
   $subject = $_POST['subject'];
   $message = $_POST['message'];
 
-  require '../assets/vendor/autoload.php'; 
+  require '../assets/vendor/PHPMailer.php';
+  require '../assets/vendor/SMTP.php';
+  require '../assets/vendor/Exception.php';
 
+  // Define namespaces
   use PHPMailer\PHPMailer\PHPMailer;
   use PHPMailer\PHPMailer\SMTP;
+  use PHPMailer\PHPMailer\Exception;
 
+  // Creat instance of phpmailer
   // the argument will configure phpmailer to throw an exception if there is a problem
   $mail = new PHPMailer(true);
 
@@ -25,15 +30,17 @@
 
   // let PHPMailer knows that SMTP server will be used
   $mail->isSMTP();
-  $mail->SMTPAuth = true;
+
 
   //establish SMTP server
   $mail->Host = "smtp.gmail.com";
-  $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+  $mail->SMTPAuth = "true";
+  $mail->SMTPSecure = "tls";
   $mail->Port = 587;
 
-  $mail->Username = "dungnguyen322003@gmail.com";
-  $mail->Password = "HoangPhongBaoKhanh0802@";
+  //establish connection to SMTP server
+  $mail->Username = "phu170927@gmail.com";
+  $mail->Password = "chiatay081217";
 
   $mail->setFrom($email, $name);
   $mail->addAddress("dungnguyen322003@gmail.com", "Dung");
@@ -41,8 +48,16 @@
   $mail->Subject = $subject;
   $mail->Body = $message;
 
-  echo $mail->send();
+ 
 
+  if ( $mail->Send()) {
+    echo "Email Sent..!";
+  } else{
+    echo "Error..!";
+  }
+
+  // Close smtp connection
+  $mail->smtpClose();
 
 
 ?>
