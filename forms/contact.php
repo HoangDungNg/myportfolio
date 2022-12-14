@@ -39,8 +39,8 @@
   $mail->Port = 587;
 
   //establish connection to SMTP server
-  $mail->Username = "phu170927@gmail.com";
-  $mail->Password = "chiatay081217";
+  $mail->Username = "dungnguyen322003@gmail.com";
+  $mail->Password = "phqwzxisezsrturx";
 
   $mail->setFrom($email, $name);
   $mail->addAddress("dungnguyen322003@gmail.com", "Dung");
